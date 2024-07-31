@@ -6,22 +6,26 @@ function Register(){
     const gender = document.getElementById('gender').value;
     const password = document.getElementById('password').value;
 
-    const user = {
-        id: Date.now(),
-        fullname : fullname,
-        username : username,
-        email : email,
-        telephone : telephone,
-        gender : gender,
-        password : password
+    if (fullname && username && email && telephone && gender && password) {
+        const user = {
+            fullname,
+            username,
+            email,
+            telephone,
+            gender,
+            password,
+        };
+
+        let users = JSON.parse(localStorage.getItem('users')) || []
+
+
+        users.push(user)        
+        localStorage.setItem('users', JSON.stringify(users));
+        window.location.href = 'SignIn.html';
+
+    } else {
+        alert('All fields are required!!')
     }
-
-    let users = JSON.parse(localStorage.getItem('users')) || []
-
-    users.push(user)
-    localStorage.setItem('users', JSON.stringify(users))
-
-    alert('You were registered successfully!!')
 }
 
 function Login(){
@@ -32,10 +36,11 @@ function Login(){
 
     const user = users.find(u => u.username === loginusername && u.password === loginpassword);
 
-    if(!user){
-        alert('Invalid Username or Password!!')
-        // console.log("Logged in Successfully!!")
+    if(user){
+        sessionStorage.setItem('loggedIn', 'true') 
+        window.location.href = "LoggedIn.html";
+
     } else {
-        alert('Logged in Successfully!!')
+        alert('Invalid Credentials')
     }
 }

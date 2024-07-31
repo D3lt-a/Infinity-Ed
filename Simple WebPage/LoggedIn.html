@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>List of Users</h2>
+    <ul id="userlist">
+
+    </ul>
+    <button class="logout">Logout</button>
+    <script>
+        window.addEventListener('load', function () {
+            if (sessionStorage.getItem('loggedIn') !== 'true') {
+                alert('You must be logged in to view this page.');
+                window.location.href = 'Register.html';
+                return;
+            }
+
+            const userList = document.getElementById('userList');
+            const user = JSON.parse(localStorage.getItem('users'));
+            if (user) {
+                const li = document.createElement('li');
+                li.textContent = `Name: ${user.name}, Email: ${user.email}, Telephone: ${user.telephone}, Username: ${user.username}, Gender: ${user.gender}`;
+                userList.appendChild(li);
+            }
+
+            document.getElementById('logout').addEventListener('click', function () {
+                sessionStorage.removeItem('loggedIn');
+                window.location.href = 'Register.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
