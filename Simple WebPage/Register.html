@@ -44,25 +44,20 @@
         <div class="form">
             <form action="#">
                 <h1>Sign up for Free</h1>
-                <input type="text" id="fullname" placeholder="Full Name" required>
-                <input type="text" id="username" placeholder="User Name" required>
-                <input type="email" id="email" placeholder="Email" required>
-                <input type="tel"   id="telephone" placeholder="Telephone" minlength="10" maxlength="12" required>
-                <input type="text"  id="gender" placeholder="Gender" required>
-                <input type="text"  id="password" placeholder="Create your Password" maxlength="8" required>
-                <select name="#" id="#">
-                    <option value="#">Type</option>
-                    <option value="#">Premieum</option>
-                    <option value="#">Basic</option>
-                </select> <br>
-    
-                <button onclick="Register()">Register</button>
-                <div><br></div>
+                <form id="registrationForm">
+                    <input type="text"  placeholder="Full Name"  id="fullname" name="fullname" required>
+                    <input type="text"  placeholder="Username" id="username" name="username" required>
+                    <input type="email" placeholder="Email"  id="email" name="email" required>
+                    <input type="text"  placeholder="Telephone" id="telephone" name="telephone" required>
+                    <input type="text"  placeholder="Gender" id="gender" name="gender" required>
+                    <input type="password" placeholder="Password" id="password" name="password" required>
+                    <button type="button" onclick="Register()">Register</button>
+                </form>
                 <span>Already an account?<a href="SignIn.html" style="color:#007bff ;  text-decoration: underline;">Login</a></span>
             </form>
         </div>
     </div>
 
-    <script src="Storage.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>

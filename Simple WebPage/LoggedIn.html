@@ -1,17 +1,14 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>List of Users</title>
 </head>
-
 <body>
     <h2>List of Users</h2>
-    <ul id="userlist">
-
-    </ul>
-    <button class="logout">Logout</button>
+    <ul id="userList"></ul>
+    <button id="logout">Logout</button>
     <script>
         window.addEventListener('load', function () {
             if (sessionStorage.getItem('loggedIn') !== 'true') {
@@ -21,12 +18,30 @@
             }
 
             const userList = document.getElementById('userList');
-            const user = JSON.parse(localStorage.getItem('users'));
-            if (user) {
-                const li = document.createElement('li');
-                li.textContent = `Name: ${user.name}, Email: ${user.email}, Telephone: ${user.telephone}, Username: ${user.username}, Gender: ${user.gender}`;
-                userList.appendChild(li);
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            function renderUsers() {
+                userList.innerHTML = ''; // Clear existing list
+                if (users.length > 0) {
+                    users.forEach(user => {
+                        const li = document.createElement('li');
+                        li.textContent = `Name: ${user.fullname}, Email: ${user.email}, Telephone: ${user.telephone}, Username: ${user.username}, Gender: ${user.gender}`;
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.onclick = () => deleteUser(user.id);
+                        li.appendChild(deleteButton);
+                        userList.appendChild(li);
+                    });
+                }
             }
+
+            function deleteUser(userId) {
+                users = users.filter(user => user.id !== userId);
+                localStorage.setItem('users', JSON.stringify(users));
+                renderUsers();
+            }
+
+            renderUsers();
 
             document.getElementById('logout').addEventListener('click', function () {
                 sessionStorage.removeItem('loggedIn');
@@ -34,6 +49,63 @@
             });
         });
     </script>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background: linear-gradient(135deg, #4f8ef7, #78d2f5);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            font-size: 35px;
+            margin-top: 20px;
+            color: whitesmoke;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 80%;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        li:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff3333;
+        }
+        #logout {
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #logout:hover {
+            background-color: #555;
+        }
+    </style>
 </body>
-
 </html>

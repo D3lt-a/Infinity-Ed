@@ -43,21 +43,18 @@
         </div>
     
         <div class="form">
+            <h1>Sign In </h1>
             <form action="#">
-                <!-- <h1>Sign up for Free</h1> -->
-                <h1>Sign In</h1>
-                <input type="text" id="loginUserName" placeholder="Username" required>
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                
-                <br>
-    
-                <button onclick="Login()">SignIn</button>
-                <div><br></div>
+                <form id="loginForm">
+                    <input type="text" placeholder="Username" id="loginusername" name="loginusername" required>
+                    <input type="password" placeholder="Password" id="loginpassword" name="loginpassword" required>
+                    <button type="button" onclick="Login()">Login</button>
+                </form>
                 <span>Don't have an account?<a href="Register.html" style="color:#007bff ;  text-decoration: underline;">Create One</a></span>
             </form>
         </div>
     </div>
 
-    <script src="Storage.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
