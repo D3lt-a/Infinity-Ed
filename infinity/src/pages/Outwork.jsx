@@ -1,5 +1,5 @@
 
-function Outwork() {
+function Ourwork() {
   return (
     <div>
       <h1>OUTWORK WORK PAGE</h1>
@@ -7,4 +7,4 @@ function Outwork() {
   )
 }
 
-export default Outwork
+export default Ourwork

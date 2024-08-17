@@ -4,18 +4,18 @@ import './index.css'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from 'react-router-dom'
 import Layout from './layout'
 import Home from './pages/home'
-import Contact from './pages/Contact'
 import Services from './pages/Services'
-import Outwork from './pages/Outwork'
+import Ourwork from './pages/Outwork'
+import About from './pages/About'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
       <Route path='' element={<Home/>} />
-      <Route path='contact' element={<Contact/>} />
       <Route path='services' element={<Services/>} />
-      <Route path='outwork' element={<Outwork/>} />
+      <Route path='ourwork' element={<Ourwork/>} />
+      <Route path='about' element={<About/>} />
     </Route>
   )
 )
