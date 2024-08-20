@@ -5,6 +5,7 @@ import WorkShowCase from "../componets/HomePage/WorkShowCase"
 import ProjectOverview from "../componets/HomePage/ProjectOverview"
 import Proof from "../componets/HomePage/proof"
 import Testimonial from "../componets/HomePage/Testimonial"
+import ContactForm from "../componets/Common/ContactForm"
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <ProjectOverview />
       <Proof />
       <Testimonial />
+      <ContactForm />
     </div>
   )
 }
