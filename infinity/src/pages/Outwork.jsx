@@ -1,8 +1,11 @@
+import ProjectCard from "../componets/OurWorkPage/ProjectCard"
+import ContactForm from "../componets/Common/ContactForm"
 
 function Ourwork() {
   return (
     <div>
-      <h1>OUTWORK WORK PAGE</h1>
+      <ProjectCard />
+      <ContactForm />
     </div>
   )
 }
